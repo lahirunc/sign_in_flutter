@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sign_in/config.dart';
 
-class BuildLoginTitle extends StatelessWidget {
-  const BuildLoginTitle({
+class HeroTitle extends StatelessWidget {
+  const HeroTitle({
     Key? key,
+    @required this.title,
+    @required this.subtitle,
   }) : super(key: key);
+
+  final String? title, subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class BuildLoginTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              'Welcome!',
+              title!,
               style: TextStyle(
                 fontSize: Config.screenWidth! * 0.1,
                 // fontWeight: FontWeight.bold,
@@ -26,7 +30,7 @@ class BuildLoginTitle extends StatelessWidget {
             ),
             SizedBox(height: Config.screenHeight! * 0.005),
             Text(
-              'Enter email and password to login...',
+              subtitle!,
               style: TextStyle(
                 fontSize: Config.screenWidth! * 0.045,
               ),

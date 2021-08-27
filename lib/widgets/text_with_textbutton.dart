@@ -5,11 +5,13 @@ import '../config.dart';
 class TextWithTextButton extends StatelessWidget {
   const TextWithTextButton({
     Key? key,
-    this.text,
-    this.textButtonText,
+    @required this.text,
+    @required this.textButtonText,
+    @required this.onPressed,
   }) : super(key: key);
 
   final String? text, textButtonText;
+  final onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class TextWithTextButton extends StatelessWidget {
             Text(text!),
             TextButton(
               child: Text(textButtonText!),
-              onPressed: () => print('Sign up'),
+              onPressed: onPressed,
               style: ButtonStyle(
                 overlayColor: MaterialStateColor.resolveWith(
                     (states) => Colors.transparent),

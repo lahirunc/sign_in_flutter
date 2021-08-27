@@ -5,7 +5,7 @@ import '../config.dart';
 class RoundedTextFormField extends StatelessWidget {
   const RoundedTextFormField({
     Key? key,
-    @required this.controller,
+    this.controller,
     this.obsecureText = false,
     @required this.hintText,
     this.validator,
@@ -19,7 +19,7 @@ class RoundedTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller!,
+      controller: controller,
       obscureText: obsecureText!,
       decoration: InputDecoration(
         hintText: hintText!,

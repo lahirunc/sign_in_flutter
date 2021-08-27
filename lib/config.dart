@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const kPrimaryColor = Color(0xFF6061FA);
 const kBackgroundColor = Color(0xFFFFFF);
 
-class Constants {
+class Config {
   static MediaQueryData? _mediaQueryData;
   static double? screenWidth;
   static double? screenHeight;

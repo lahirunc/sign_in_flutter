@@ -12,7 +12,7 @@ class AuthController extends GetxController {
 
   @override
   void onInit() {
-    displayName = userProfile!.displayName!;
+    displayName = userProfile != null ? userProfile!.displayName! : '';
 
     super.onInit();
   }

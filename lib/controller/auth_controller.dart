@@ -10,6 +10,13 @@ class AuthController extends GetxController {
 
   User? get userProfile => auth.currentUser;
 
+  @override
+  void onInit() {
+    displayName = userProfile!.displayName!;
+
+    super.onInit();
+  }
+  
   void signUp(String name, String email, String password) async {
     try {
       await auth

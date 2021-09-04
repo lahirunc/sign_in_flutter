@@ -31,7 +31,7 @@ class _SignUpState extends State<SignUp> {
               children: [
                 HeroTitle(
                   title: 'Sign Up',
-                  subtitle: 'Enter email and password to login...',
+                  subtitle: 'Create an account...',
                 ),
                 buildTextFormFields(),
                 SignUpButtons(

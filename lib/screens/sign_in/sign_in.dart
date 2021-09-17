@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sign_in/config.dart';
 
 import '../../widgets/hero_image.dart';
 import 'localWidgets/sign_in_form.dart';

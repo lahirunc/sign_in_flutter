@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sign_button/create_button.dart';
+import 'package:sign_button/sign_button.dart';
 import 'package:sign_in/controller/auth_controller.dart';
 import 'package:sign_in/screens/reset_password/reset_password.dart';
 import 'package:sign_in/screens/sign_up/sign_up.dart';
@@ -60,6 +62,11 @@ class SignInButtons extends StatelessWidget {
               horizontal: Config.screenWidth! * 0.4,
               vertical: Config.screenHeight! * 0.02,
             ),
+          ),
+          SizedBox(height: Config.screenHeight! * 0.01),
+          SignInButton.mini(
+            buttonType: ButtonType.google,
+            onPressed: () => _authController.signInWithGoogle(),
           ),
           TextWithTextButton(
             text: 'Don\'t have an account?',

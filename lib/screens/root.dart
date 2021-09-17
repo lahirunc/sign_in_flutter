@@ -22,7 +22,7 @@ class Root extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: Config.screenWidth! * 0.04),
-                child: _.userProfile != null ? Home() : SignIn()),
+                child: _.isSignedIn.value ? Home() : SignIn()),
           );
         },
       ),

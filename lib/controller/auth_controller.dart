@@ -1,12 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in/config.dart';
 import 'package:sign_in/screens/root.dart';
 
 class AuthController extends GetxController {
   var displayName = '';
   FirebaseAuth auth = FirebaseAuth.instance;
+  var _googleSignIn = GoogleSignIn();
+  var googleAcc = Rx<GoogleSignInAccount?>(null);
+  var isSignedIn = false.obs;
 
   User? get userProfile => auth.currentUser;
 
@@ -16,7 +20,7 @@ class AuthController extends GetxController {
 
     super.onInit();
   }
-  
+
   void signUp(String name, String email, String password) async {
     try {
       await auth
@@ -88,6 +92,20 @@ class AuthController extends GetxController {
     }
   }
 
+  void signInWithGoogle() async {
+    try {
+      googleAcc.value = await _googleSignIn.signIn();
+      displayName = googleAcc.value!.displayName!;
+      isSignedIn.value = true;
+      update(); // <-- without this the isSignedin value is not updated.
+    } catch (e) {
+      Get.snackbar('Error occured!', e.toString(),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: kPrimaryColor,
+          colorText: kBackgroundColor);
+    }
+  }
+
   void resetPassword(String email) async {
     try {
       await auth.sendPasswordResetEmail(email: email);
@@ -119,7 +137,9 @@ class AuthController extends GetxController {
   void signout() async {
     try {
       await auth.signOut();
+      await _googleSignIn.signOut();
       displayName = '';
+      isSignedIn.value = false;
       update();
       Get.offAll(() => Root());
     } catch (e) {
